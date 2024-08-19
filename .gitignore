@@ -1,0 +1,21 @@
+# Ignore environment variable files
+.env
+
+# Ignore secret configuration files
+config/secrets.yaml
+
+# Ignore database files
+*.sqlite3
+
+# Ignore credentials
+credentials.json
+
+# Ignore key files
+*.pem
+
+# Ignore specific directories
+__pycache__/
+instance/
+
+# Ignore Mac OS specific
+.DS_Store
