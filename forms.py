@@ -8,5 +8,4 @@ class ProductForm(FlaskForm):
     price = DecimalField('Price', validators=[DataRequired(), NumberRange(min=0)])
     stock_quantity = IntegerField('Stock Quantity', validators=[Optional(), NumberRange(min=0)])
     category_id = SelectField('Category', coerce=int, validators=[DataRequired()])
-    image_url = StringField('Image URL', validators=[Optional(), URL()])
-    submit = SubmitField('Submit')
+    image_url = StringField('Image URL', validators=[Option

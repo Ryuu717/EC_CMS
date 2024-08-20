@@ -19,3 +19,6 @@ instance/
 
 # Ignore Mac OS specific
 .DS_Store
+
+# Ignore venv
+venv/

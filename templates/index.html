@@ -16,4 +16,46 @@
                     <th>Updated At</th>
                     <th>Image URL</th>
                     <th>Category ID</th>
-                    <th>Edit</th
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                <tr>
+                    <td>{{ product.id }}</td>
+                    <td>{{ product.name }}</td>
+                    <!-- <td>{{ product.description }}</td> -->
+                    <td class="truncate" title="{{ product.description }}">{{ product.description[:50] }}{% if product.description|length > 50 %}...{% endif %}</td>
+                    <td>${{ product.price }}</td>
+                    <td>{{ product.stock_quantity }}</td>
+                    <td>{{ product.created_at }}</td>
+                    <td>{{ product.updated_at }}</td>
+                    <!-- <td><a href="{{ product.image_url }}" target="_blank">{{ product.image_url }}</a></td> -->
+                    <!-- <td class="truncate" title="{{ product.image_url }}">
+                        <a href="{{ product.image_url }}" target="_blank">{{ product.image_url[:30] }}{% if product.image_url|length > 30 %}...{% endif %}</a>
+                    </td>                     -->
+                    <td>
+                        {% if product.image_url %}
+                            <img src="{{ product.image_url }}" alt="{{ product.name }}" class="product-image">
+                        {% else %}
+                            No Image
+                        {% endif %}
+                    </td>                    
+                    <td>{{ product.category_id }}</td>
+                    <td>
+                        <!-- Edit button -->
+                        <a href="{{ url_for('edit_product', product_id=product.id) }}" class="btn btn-warning">Edit</a>
+                    </td>
+                    <td>
+                        <!-- Delete button -->
+                        <form action="{{ url_for('delete_product', product_id=product.id) }}" method="post" style="display:inline;">
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this product?');">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
